@@ -30,6 +30,26 @@
         <div class="text-right" style="text-align: right">
             <a href="product/create" class="btn btn-dark mt-2">Add Product</a>
         </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>S.no </th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td><img src="products/{{$product->image}}" width="30" height="30" class="rounded-circle"></td>
+                    <td><a href ="products/{{$product->id}}/edit" class ="btn btn-warning btn-sm" style="border-radius: 0px">Edit</a>&nbsp;&nbsp;<a href = "products/{{$product->id}}/delete" class ="btn btn-danger btn-sm" style="border-radius: 0px">Delete</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+          </table>
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" ></script>
   </body>

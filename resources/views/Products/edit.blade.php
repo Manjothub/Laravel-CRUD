@@ -35,18 +35,19 @@
         <div class="row justify-content-center">
             <div class="col-sm-8">
                 <div class="card mt-3 p-3">
-                    <form action="/product/store" method="post" enctype="multipart/form-data">
+                    <h3 class="text-muted">Product Edit #{{ $product-> name}}</h3>
+                    <form action="/products/{{$product->id}}/update" method="PUT" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+                            <input type="text" class="form-control" id="name" name="name" value="{{old('name',$product->name)}}">
                             @if($errors->has('name'))
                             <span class="text-danger">{{ $errors->first('name')}}</span>
                             @endif
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Description</label>
-                            <textarea name="description" id="" cols="30" rows="10" class="form-control" value="{{old('description')}}"></textarea>
+                            <textarea name="description" id="" cols="30" rows="10" class="form-control" value="{{old('description',$product->description)}}"></textarea>
                             @if($errors->has('description'))
                             <span class="text-danger">{{ $errors->first('description')}}</span>
                             @endif
@@ -58,7 +59,7 @@
                             <span class="text-danger">{{ $errors->first('image')}}</span>
                             @endif
                         </div>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
             </div>
